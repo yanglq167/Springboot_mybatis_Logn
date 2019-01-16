@@ -9,7 +9,7 @@ server:
 spring:
   datasource:
     name: test
-    url: jdbc:mysql://192.168.64.131:3306/test
+    url: jdbc:mysql://192.168.64.131:3306/test0
     username: root
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
