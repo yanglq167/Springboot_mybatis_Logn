@@ -5,8 +5,11 @@ import com.example.springboottest1.service.UserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * @program: SpirngbootTest1
@@ -50,6 +53,39 @@ public class UserLoginController {
                 return "hello";
             }
         return "error";
+
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = {"/uregister"})
+    public String login(@RequestParam("username") String username,
+                        @RequestParam("password") String password,
+                        @RequestParam("password2") String password2,
+                        @RequestParam("age") int age) {
+
+        if(!password.equals(password2)){
+
+            return "两次密码不相同，注册失败！！";
+        }else {
+            int a = userLoginService.add(username,password,age);
+            if(a == 0){
+                return "注册失败！";
+            }else {
+                return "注册成功！";
+            }
+        }
+
+    }
+
+
+    @ResponseBody
+    @RequestMapping(value = {"/test"})
+    public String test() {
+
+        List<User> list = userLoginService.selectList();
+
+      return "测试数据"+list.get(0).getUsername();
 
     }
 
