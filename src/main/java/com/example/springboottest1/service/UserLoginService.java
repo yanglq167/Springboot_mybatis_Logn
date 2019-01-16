@@ -4,5 +4,5 @@ import com.example.springboottest1.entity.User;
 
 public interface UserLoginService {
 
-    User userLogin(String username, String password);
+    User userLogin(User bean);
 }

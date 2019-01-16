@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 public class UserLoginController {
 
     @Autowired
-    private static UserLoginService userLoginService;
+    private  UserLoginService userLoginService;
 
     /**
      * @Description: 跳转到注册页面
@@ -39,7 +39,9 @@ public class UserLoginController {
     @RequestMapping(value = {"/login"})
     public String login(String username, String password, HttpServletRequest request) {
 
-            User user = userLoginService.userLogin(username,password);
+            User bean  = new User(username,password);
+
+            User user = (User) userLoginService.userLogin(bean);
 
             if(null!=user) {
 

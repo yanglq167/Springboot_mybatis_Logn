@@ -19,8 +19,8 @@ public class UserLoginServiceImpl implements UserLoginService {
     private UserMapper usermapper;
 
     @Override
-    public User userLogin(String username, String password) {
-        User user = usermapper.userlogin(username,password);
+    public User userLogin(User bean) {
+        User user = usermapper.userlogin(bean);
         return user;
     }
 
